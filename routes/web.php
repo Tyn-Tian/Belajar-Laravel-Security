@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TodoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::post('/api/todo', [TodoController::class, "create"]);
 
 Route::get("/users/login", [\App\Http\Controllers\UserController::class, "login"]);
 Route::get("/users/current", [\App\Http\Controllers\UserController::class, "current"])
